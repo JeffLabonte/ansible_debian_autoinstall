@@ -1,0 +1,7 @@
+---
+- hosts: my_machine
+  vars_files:
+    - group_vars/vault_xps15.yml
+  roles:
+    - roles/initial_setup
+    
