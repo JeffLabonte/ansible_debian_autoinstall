@@ -52,3 +52,18 @@
   file:
     path: "{{ deb_folder }}"
     state: absent
+
+- name: Installed wanted applications
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  become: yes
+  with_items: "{{ wanted_applications }}"
+
+- name: Update, Upgrade, Autoremove, Autoclean
+  apt:
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
+    upgrade: yes
+  become: yes

@@ -46,3 +46,9 @@ third_party_repos:
   - { add_key_cmd: "curl -sS https://download.spotify.com/debian/pubkey.gpg | apt-key add -", add_repo_cmd: "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list", name: "spotify-client" }
   - { add_key_cmd: "curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -", add_repo_cmd: "add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable'", name: "docker-ce" }
 
+
+wanted_applications:
+  - calibre
+  - nmap
+  - wireshark
+  - restic
