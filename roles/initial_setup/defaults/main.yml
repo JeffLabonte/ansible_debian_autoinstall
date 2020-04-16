@@ -10,7 +10,6 @@ base_dependencies:
   - python3
   - python3-pip
   - python3-dev
-  - telegram-desktop
   - build-essential
   - rsync
   - cmake
@@ -18,7 +17,6 @@ base_dependencies:
   - curl
   - snapd
   - virtualbox
-  - virtualbox-ext-pack
   - gimp
   - inkscape
   - vagrant
