@@ -1,33 +1,29 @@
 ---
 # tasks file for roles/initial_setup
 
-- name: Install Linux-Headers on Debian
-  shell: apt-get install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
-  become: yes
-
 - name: Install Dependencies
   apt:
     name: "{{ base_dependencies  }}"
     state: latest
   become: yes
 
-- name: Add keys for new repos
-  shell: "{{ item.add_key_cmd }}" 
-  with_items: "{{ third_party_repos }}"
-  become: true
-
-- name: Add Third Party Repo
-  shell: "{{ item.add_repo_cmd  }}"
-  with_items: "{{ third_party_repos }}"
-  become: yes
-
-- name: Install Third Party Package
-  apt:
-    update_cache: yes
-    name: "{{ item.name }}"
-    state: latest
-  with_items: "{{ third_party_repos }}"
-  become: yes
+  # - name: Add keys for new repos
+  #   shell: "{{ item.add_key_cmd }}" 
+  #   with_items: "{{ third_party_repos }}"
+  #   become: true
+  # 
+  # - name: Add Third Party Repo
+  #   shell: "{{ item.add_repo_cmd  }}"
+  #   with_items: "{{ third_party_repos }}"
+  #   become: yes
+  # 
+  # - name: Install Third Party Package
+  #   apt:
+  #     update_cache: yes
+  #     name: "{{ item.name }}"
+  #     state: latest
+  #   with_items: "{{ third_party_repos }}"
+  #   become: yes
 
 - name: Create folder if it doesn't exists
   file:
@@ -53,17 +49,19 @@
     path: "{{ deb_folder }}"
     state: absent
 
-- name: Installed wanted applications
-  apt:
-    name: "{{ item }}"
-    update_cache: yes
-  become: yes
-  with_items: "{{ wanted_applications }}"
-
 - name: Update, Upgrade, Autoremove, Autoclean
   apt:
     update_cache: yes
+    upgrade: yes
     autoclean: yes
     autoremove: yes
-    upgrade: yes
+  become: yes
+
+- name: Install new sudoers
+  copy:
+    src: sudoers
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 400
   become: yes
