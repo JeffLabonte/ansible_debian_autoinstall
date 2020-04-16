@@ -3,51 +3,19 @@
 
 - name: Install Dependencies
   apt:
-    name: "{{ base_dependencies  }}"
+    name: "{{ base_dependencies }}"
+    update_cache: yes
     state: latest
   become: yes
 
-  # - name: Add keys for new repos
-  #   shell: "{{ item.add_key_cmd }}" 
-  #   with_items: "{{ third_party_repos }}"
-  #   become: true
-  # 
-  # - name: Add Third Party Repo
-  #   shell: "{{ item.add_repo_cmd  }}"
-  #   with_items: "{{ third_party_repos }}"
-  #   become: yes
-  # 
-  # - name: Install Third Party Package
-  #   apt:
-  #     update_cache: yes
-  #     name: "{{ item.name }}"
-  #     state: latest
-  #   with_items: "{{ third_party_repos }}"
-  #   become: yes
-
-- name: Create folder if it doesn't exists
-  file:
-    path: "{{ deb_folder }}"
-    state: directory
-    mode: '755'
-
-- name: Download Applications Deb
-  get_url:
-    url: "{{ item.url }}"
-    dest: "{{ deb_folder  }}/{{ item.name }}"
-  with_items: "{{ deb_packages_to_fetch }}"
-
-- name: Install .deb archives
-  apt:
-    deb: "{{ deb_folder}}/{{ item.name }}"
+- name: Install Snaps
+  snap:
+    name: "{{ item.name }}"
     state: present
-  with_items: "{{ deb_packages_to_fetch }}"
-  become: yes
-
-- name: Remove deb folder
-  file:
-    path: "{{ deb_folder }}"
-    state: absent
+    channel: "{{ item.channel }}"
+    classic: "{{ item.classic }}"
+  with_items: "{{ snaps_to_install }}"
+  become: true
 
 - name: Update, Upgrade, Autoremove, Autoclean
   apt:
