@@ -41,3 +41,18 @@ wanted_applications:
   - nmap
   - wireshark
   - restic
+
+snaps_to_install:
+  - { channel: "stable", name: pycharm-professional, classic: True }
+  - { channel: "stable", name: slack,                classic: True }
+  - { channel: "stable", name: discord,              classic: False}
+  - { channel: "stable", name: telegram-desktop,     classic: False}
+  - { channel: "stable", name: cacher,               classic: False}
+  - { channel: "stable", name: mattermost-desktop,   classic: False}
+  - { channel: "stable", name: zenkit,               classic: False}
+  - { channel: "stable", name: disk-space-saver,     classic: False}
+  - { channel: "beta",   name: authy,                classic: False}
+
+add_group_to_user:
+  - wireshark
+  - docker
