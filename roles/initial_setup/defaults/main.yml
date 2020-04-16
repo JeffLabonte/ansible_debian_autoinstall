@@ -36,19 +36,6 @@ base_dependencies:
   - peek
   - snapd
 
-deb_folder: "/home/jflabonte/Downloads/debs"
-
-deb_packages_to_fetch:
-  - { url: "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb", name: "slack.deb" }
-  - { url: "https://discordapp.com/api/download?platform=linux&format=deb", name: "discord.deb" }
-  - { url: "https://release.gitkraken.com/linux/gitkraken-amd64.deb", name: "gitkraken.deb" }
-
-    #third_party_repos:
-    #  - { add_key_cmd: "wget -qO - https://typora.io/linux/public-key.asc | apt-key add -", add_repo_cmd: "add-apt-repository 'deb https://typora.io/linux ./'", name: "typora" }
-    #  - { add_key_cmd: "wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | apt-key add -", add_repo_cmd: "echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' > /etc/apt/sources.list.d/vscodium.list", name: "codium" }
-    #  - { add_key_cmd: "curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -", add_repo_cmd: "echo 'deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main' > /etc/apt/sources.list.d/brave-browser-release.list", name: "brave-browser" }
-    #  - { add_key_cmd: "curl -sS https://download.spotify.com/debian/pubkey.gpg | apt-key add -", add_repo_cmd: "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list", name: "spotify-client" }
-    #
 wanted_applications:
   - calibre
   - nmap
