@@ -18,6 +18,9 @@ base_dependencies:
   - curl
   - snapd
   - virtualbox
+  - virtualbox-ext-pack
+  - gimp
+  - inkscape
   - vagrant
   - sshpass
   - firefox
@@ -29,6 +32,11 @@ base_dependencies:
   - git
   - pass
   - intel-media-va-driver-non-free
+  - qtpass
+  - git-lfs
+  - git
+  - peek
+  - snapd
 
 deb_folder: "/home/jflabonte/Downloads/debs"
 
