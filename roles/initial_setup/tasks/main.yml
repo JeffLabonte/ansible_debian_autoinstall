@@ -8,6 +8,13 @@
     state: latest
   become: yes
 
+- name: Install wanted applications
+  apt:
+    name: "{{ wanted_applications }}"
+    update_cache: yes
+    state: latest
+  become: yes
+
 - name: Install Snaps
   snap:
     name: "{{ item.name }}"
