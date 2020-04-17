@@ -15,6 +15,13 @@
     state: latest
   become: yes
 
+- name: Install Yocto Dependencies
+  apt:
+    name: "{{ yocto_dependencies }}"
+    update_cache: yes
+    state: latest
+  become: yes
+
 - name: Install Snaps
   snap:
     name: "{{ item.name }}"
