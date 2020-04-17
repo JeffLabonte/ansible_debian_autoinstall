@@ -40,3 +40,17 @@
     group: root
     mode: 400
   become: yes
+
+- name: Create group if doesn't exists
+  group:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ add_group_to_user }}"
+
+- name: Add group to user
+  user:
+    name: jflabonte
+    groups: "{{ add_group_to_user }}"
+  become: yes
+  notify: Restart Docker
