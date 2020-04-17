@@ -51,6 +51,7 @@ snaps_to_install:
   - { channel: "stable", name: mattermost-desktop,   classic: False}
   - { channel: "stable", name: zenkit,               classic: False}
   - { channel: "stable", name: disk-space-saver,     classic: False}
+  - { channel: "stable", name: dbeaver-ce,           classic: False}
   - { channel: "beta",   name: authy,                classic: False}
 
 add_group_to_user:
